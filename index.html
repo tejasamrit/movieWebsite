@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <title>Movie website</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        /* overflow: hidden; */
+        transition: all 0.5s ease;
+        background-color:#043a3a;
+        height: 100vh;
+        position: relative;
+      }
+
+      .navbar {
+        background-color:#022727;
+        color: white;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+      }
+      
+
+      .filterDiv {
+  display: none;
+}
+      form{
+        width: 280px;
+        display: block;
+        margin: auto;
+        margin-top: 28px;
+        /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+        /* background-color: #363430; */
+        height: 100%;
+      }
+      .card{
+        width: 18rem;
+        /* overflow: hidden; */
+        height: 395px;
+        /* outline: none; */
+        /* border: 4px solid black; */
+        margin-top: 24px;
+        border-radius: 4px;
+        /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
+        box-shadow: rgba(243, 242, 242, 0.12) 0px 2px 4px 0px, rgba(243, 243, 243, 0.32) 0px 2px 16px 0px;
+      }
+      .card img{
+        height: 210px;
+      }
+
+      .card:hover{
+        border: 3px solid black;
+      }
+
+
+      .card-body{
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        /* justify-content: center; */
+        height: 180px;
+        /* border-radius: 7px; */
+        background-color:#daaf05;
+        color:black;
+      }
+      .card-title span{
+        font-size: 15px;
+      }
+     
+      .show {
+  display: block;
+}
+
+
+      .btn2 {
+    
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  padding: 8px 12px;
+    border-radius: 6px;
+    background-color:#FFCE13;
+    margin-right: 10px;
+}
+#myBtnContainer{
+    /* margin-right: 20px; */
+    margin-left: 190px;
+}
+.imdb{
+    /* background-color: aqua; */
+    
+    /* margin-left: -167px; */
+}
+.imdb p{
+    margin-top:10px;
+    color:#8d1103;
+    font-weight: 600;
+}
+
+.btn2.active {
+  background-color:#88070B;
+  color: white;
+}
+
+.card-text{
+    /* margin-left: -61px; */
+    bottom: 0;
+
+}
+.navbar-brand{
+    font-size: 28px;
+    margin-left: 100px;
+    color: #FFCE13;
+}
+.navbar-brand span{
+    font-size: 12px;
+}
+.navbar-brand:hover{
+    color:#FFCE13;
+}
+
+/* responsive stars........................................ */
+@media (min-width:770px) and (max-width:900px){
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .navbar-brand{
+        margin-left:34vw;
+    margin-bottom: 20px;
+    font-size: 37px;
+    }
+    .navbar-brand span{
+        font-size: 18px;
+    }
+    .navbar-toggler{
+        background-color: white;
+    }
+
+}
+
+@media (min-width:540px) and (max-width:768px){
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+
+}
+.navbar-brand{
+    font-size: 38px;
+}
+.navbar-brand span{
+    font-size: 18px;
+}
+.navbar-toggler{
+        background-color: white;
+    }
+#myBtnContainer{
+    margin-left: 5vw;
+    margin-top: 20px;
+}
+.card{
+    width: 87vw;
+    height: 33rem;
+    margin-left: 5vw;
+}
+.card img{
+    height: 280px;
+}
+.card-body{
+    height: 245px;
+}
+.card-title{
+    font-size: 45px;
+}
+.card-title span{
+    font-size: 22px;
+}
+.card-text{
+    font-size: 20px;
+}
+.imdb{
+    font-size: 22px;
+}
+
+
+}
+
+@media (max-width:539px){
+    .container{
+        grid-template-columns: 1fr;
+    }
+    .navbar-brand{
+        margin-left: 20vw;
+    }
+    #myBtnContainer{
+        margin-left: 9vw;
+        margin-top: 11px;
+    }
+    .btn2{
+        margin: 15px 13px;
+    }
+    .form-control{
+        padding: 15px 12px;
+    }
+    .card{
+        width: 85vw;
+        margin-left: 5vw;
+    }
+}
+
+     
+
+      
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand">MovieKatta_<span>TejasAmrit</span></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul> -->
+
+         <!-- dropdown menu -->
+         <div id="myBtnContainer">
+            <button class="btn2 active" onclick="filterSelection('all')"> All</button>
+            <button class="btn2" onclick="filterSelection('action')">Action</button>
+            <button class="btn2" onclick="filterSelection('animation')"> Animation</button>
+            <button class="btn2" onclick="filterSelection('scifi')"> Scifi</button>
+            <button class="btn2" onclick="filterSelection('horror')"> Horror</button>
+            <button class="btn2" onclick="filterSelection('drama')"> Drama</button>
+           
+          </div>
+         <!-- menu end -->
+         
+        </div>
+      </div>
+    </nav>
+
+    <form class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          id="searchit"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          autocomplete="off"
+          onkeyup="filter()"
+        />
+      </form>
+      <br>
+
+    <div class="container ">
+        <div class="card filterDiv animation"   >
+            <img src="images/minions.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Minions <span>[2015]</span></h2>
+              <p class="card-text">Family/Comedy | 1h 31m</p>
+              <div class="imdb">
+                <p>IMDB : 6.4/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv horror"   >
+            <img src="images/annable.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Annabelle <span>[2017]</span></h2>
+              <p class="card-text">Horror/Thriller | 1h 59m</p>
+              <div class="imdb">
+                <p>IMDB : 6.5/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+        <div class="card filterDiv scifi"   >
+            <img src="images/avatar.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+                <h2 class="card-title">Avatar-Age of Water <span>[2022]</span></h2>
+                <p class="card-text">Sci-fi/Action | 2h 50m</p>
+                <div class="imdb">
+                  <p>IMDB : 7.5/10</p>
+                  
+              </div>
+            </div>
+        </div>
+
+        <div class="card filterDiv animation"   >
+            <img src="images/cartoon.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Tangled <span>[2010]</span></h2>
+              <p class="card-text">Musical/family | 1h 40m</p>
+              <div class="imdb">
+                <p>IMDB : 7.7/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+        <div class="card filterDiv thriller action"   >
+            <img src="images/darknight.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+                <h2 class="card-title">Dark-Knight Rises <span>[2012]</span></h2>
+                <p class="card-text">Action/Thriller | 2h 49m</p>
+                <div class="imdb">
+                  <p>IMDB : 8.4/10</p>
+                  
+              </div>
+            </div>
+        </div>
+
+        <div class="card filterDiv horror"   >
+            <img src="images/jigsaw.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Jigsaw <span>[2017]</span></h2>
+              <p class="card-text">Horror/Thriller | 1h 39m</p>
+              <div class="imdb">
+                <p>IMDB : 5.7/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+        <div class="card filterDiv action scifi"   >
+            <img src="images/alien.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Aliens <span>[1990]</span></h2>
+              <p class="card-text">Action/sci-fi | 2h 19m</p>
+              <div class="imdb">
+                <p>IMDB : 8.3/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv animation"   >
+            <img src="images/croods.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Croods <span>[2013]</span></h2>
+              <p class="card-text">family/Adventure | 1h 45m</p>
+              <div class="imdb">
+                <p>IMDB : 7.2/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv drama "   >
+            <img src="images/duedate.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Due Date <span>[2010]</span></h2>
+              <p class="card-text">comedy/Adventure | 1h 35m</p>
+              <div class="imdb">
+                <p>IMDB : 6.5/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action scifi"   >
+            <img src="images/venom.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Venom <span>[2018]</span></h2>
+              <p class="card-text">Action/sci-fi | 2h 19m</p>
+              <div class="imdb">
+                <p>IMDB : 6.6/10</p>
+                
+            </div>
+            </div>
+          </div>
+          <div class="card filterDiv action"   >
+            <img src="images/300.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">300-Rise of Empire <span>[2006]</span></h2>
+              <p class="card-text">Action/Adventure | 1h 59m</p>
+              <div class="imdb">
+                <p>IMDB : 7/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action"   >
+            <img src="images/avengers.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">The Avengers <span>[2012]</span></h2>
+              <p class="card-text">Action/Adventure | 2h 33m</p>
+              <div class="imdb">
+                <p>IMDB : 8/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action"   >
+            <img src="images/blackwidow.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Black Widow <span>[2021]</span></h2>
+              <p class="card-text">Action/sci-fi | 2h 19m</p>
+              <div class="imdb">
+                <p>IMDB : 6.7/10</p>
+                
+            </div>
+            </div>
+          </div>
+          <div class="card filterDiv animation"   >
+            <img src="images/kung.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Kung Fu Panda <span>[2008]</span></h2>
+              <p class="card-text">family/comedy | 1h 28m</p>
+              <div class="imdb">
+                <p>IMDB : 7.6/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv drama"   >
+            <img src="images/joker.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Joker <span>[2019]</span></h2>
+              <p class="card-text">Thriller/drama | 1h 59m</p>
+              <div class="imdb">
+                <p>IMDB : 8.5/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action"   >
+            <img src="images/johnwick.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">John Wick <span>[2019]</span></h2>
+              <p class="card-text">Action/thriller | 2h 11m</p>
+              <div class="imdb">
+                <p>IMDB : 7.4/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv drama"   >
+            <img src="images/her.jpeg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Her <span>[2013]</span></h2>
+              <p class="card-text">romance/sci-fi | 2h 9m</p>
+              <div class="imdb">
+                <p>IMDB : 8/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action scifi"   >
+            <img src="images/pacifimrim.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Pacific Rim <span>[2013]</span></h2>
+              <p class="card-text">Action/sci-fi | 2h 12m</p>
+              <div class="imdb">
+                <p>IMDB : 6.9/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action"   >
+            <img src="images/superman.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Man of Steel <span>[2013]</span></h2>
+              <p class="card-text">Action/sci-fi | 2h 39m</p>
+              <div class="imdb">
+                <p>IMDB : 7.1/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action"   >
+            <img src="images/skyfall.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Skyfall <span>[2012]</span></h2>
+              <p class="card-text">Action/Adventure | 2h 29m</p>
+              <div class="imdb">
+                <p>IMDB : 7.8/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv horror"   >
+            <img src="images/evil.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Evil Dead <span>[2014]</span></h2>
+              <p class="card-text">Horror/Adventure | 1h 31m</p>
+              <div class="imdb">
+                <p>IMDB : 6.5/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv animation"   >
+            <img src="images/fast.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Turbo <span>[2013]</span></h2>
+              <p class="card-text">comedy/family | 1h 36m</p>
+              <div class="imdb">
+                <p>IMDB : 6.3/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action"   >
+            <img src="images/kickass.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Kick-Ass <span>[2010]</span></h2>
+              <p class="card-text">Action/comedy | 1h 57m</p>
+              <div class="imdb">
+                <p>IMDB : 7.5/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action scifi"   >
+            <img src="images/oblivion.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Oblivion <span>[2013]</span></h2>
+              <p class="card-text">Action/sci-fi | 2h 9m</p>
+              <div class="imdb">
+                <p>IMDB : 7/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv animation"   >
+            <img src="images/frozen.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h2 class="card-title">Frozen <span>[2019]</span></h2>
+              <p class="card-text">family/musical | 1h 43m</p>
+              <div class="imdb">
+                <p>IMDB : 6.8/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action scifi"   >
+            <img src="images/godzilla.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Godzilla <span>[2014]</span></h2>
+              <p class="card-text">Action/sci-fi | 2h 4m</p>
+              <div class="imdb">
+                <p>IMDB : 7.1/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv horror"   >
+            <img src="images/it.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">IT <span>[2017]</span></h2>
+              <p class="card-text">horror/thriller | 2h 5m</p>
+              <div class="imdb">
+                <p>IMDB : 7.3/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv animation"   >
+            <img src="images/lionking.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Lion King <span>[2019]</span></h2>
+              <p class="card-text">family/Adventure | 1h 59m</p>
+              <div class="imdb">
+                <p>IMDB : 7/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv  scifi"   >
+            <img src="images/starwars.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Star Wars <span>[2018]</span></h2>
+              <p class="card-text">Action/sci-fi | 2h 19m</p>
+              <div class="imdb">
+                <p>IMDB : 6.8/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+          <div class="card filterDiv action"   >
+            <img src="images/doctorstrange.jpg" class="card-img-top" alt="..."  >
+            <div class="card-body">
+              <h2 class="card-title">Doctor Strange <span>[2022]</span></h2>
+              <p class="card-text">Action/Adventure | 2h 6m</p>
+              <div class="imdb">
+                <p>IMDB : 7/10</p>
+                
+            </div>
+            </div>
+          </div>
+
+    </div>
+<br><br>
+    <br>
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function filter() {
+        var searchValue = document
+          .getElementById("searchit")
+          .value.toLowerCase();
+        var searchList = document.getElementsByClassName("card");
+
+        for (var i of searchList) {
+          if (i.innerHTML.search(searchValue) == -1) {
+            i.style.display = "none";
+          } else {
+            i.style.display = "block";
+          }
+        }
+      }
+    </script>
+    <script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn2");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+    
+       
+    </script>
+
+
+  </body>
+</html>
